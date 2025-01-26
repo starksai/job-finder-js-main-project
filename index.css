@@ -10,7 +10,7 @@ body, html {
   .landing-header {
     position: relative;
     height: 100vh;
-    background: linear-gradient(to bottom right, #4a90e2, #007bff), url('assets/images/header-bg.jpg') center/cover no-repeat;
+    background: linear-gradient(to right, #56CCF2, #2F80ED), url('assets/images/header-bg.jpg') center/cover no-repeat;
   }
   
   .landing-header .overlay {

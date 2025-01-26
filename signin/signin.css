@@ -1,0 +1,40 @@
+body {
+    background: linear-gradient(to right, #56CCF2, #2F80ED);
+    font-family: Arial, sans-serif;
+}
+
+.card {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: #2F80ED;
+}
+
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+button {
+    background-color: #2F80ED;
+    border-color: #2F80ED;
+    color: white;
+}
+
+button:hover {
+    background-color: #1C63A1;
+}
+
+.text-center a {
+    color: #2F80ED;
+    text-decoration: none;
+}
+
+.text-center a:hover {
+    text-decoration: underline;
+}
