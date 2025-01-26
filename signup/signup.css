@@ -1,0 +1,37 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f7fc;
+}
+
+.signup-card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  font-size: 24px;
+  color: #007bff;
+}
+
+form {
+  padding: 15px;
+}
+
+button {
+  background-color: #007bff;
+  color: #fff;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.text-danger {
+  font-size: 12px;
+}
