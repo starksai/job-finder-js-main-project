@@ -56,7 +56,7 @@ employerLogoutBtn.addEventListener("click",()=>{
           .catch((err)=>{
             Swal.fire({
                 title: "Error!",
-                text: error.message,
+                text: err.message,
                 icon: "error"
               });
           });

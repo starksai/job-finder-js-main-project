@@ -1,0 +1,59 @@
+body {
+    background-color: #f8f9fa;
+  }
+  
+  .navbar {
+    background-color: #007bff;
+  }
+  
+  .navbar-brand {
+    font-size: 1.8rem;
+    color: white;
+  }
+  
+  .profile-photo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  
+  .card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    /* cursor: pointer; */
+  }
+  
+  .card-body {
+    padding: 20px;
+  }
+  
+  .card-title {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .card-text {
+    color: #555;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+  }
+  
+  #search-form input {
+    border-radius: 10px;
+  }
+  
+  #job-listings {
+    margin-top: 20px;
+  }
+  
+  #logoutBtn {
+    color: white;
+    border: none;
+    background-color: #dc3545;
+  }
+  
