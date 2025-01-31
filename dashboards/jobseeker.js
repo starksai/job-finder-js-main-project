@@ -70,7 +70,7 @@ async function fetchJobListings() {
                         <p class="card-text"><strong>Location:</strong> ${job.location}</p>
                         <p class="card-text"><strong>Experience:</strong> ${job.experience}</p>
                         <p class="card-text"><strong>Posted Date:</strong> ${job.postedDate}</p>
-                        <button class="btn btn-primary mt-auto w-100" onclick="applyJob('${key}')">Apply</button>
+                        <a href="../applyjob/applyjob.html?jobId=${key}" class="btn btn-primary mt-auto w-100">Apply</a>
                     </div>
                 </div>
             </div>
@@ -109,7 +109,7 @@ jobseekerLogoutBtn.addEventListener("click", () => {
     showCancelButton: true,
     confirmButtonColor: "#3085d6",
     cancelButtonColor: "#d33",
-    confirmButtonText: "Yes, delete it!"
+    confirmButtonText: "Yes, do it!"
   }).then((result) => {
     if (result.isConfirmed) {
       signOut(auth)
