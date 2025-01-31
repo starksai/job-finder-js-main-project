@@ -19,6 +19,26 @@ const auth = getAuth(app);
 const db = getDatabase(app);
 
 
+
+let profileBtn = document.getElementById("profileBtn");
+
+profileBtn.addEventListener("click",()=>{
+  Swal.fire({
+    title: "Coming Soon!",
+    text: "This feature is under development. Stay tuned!",
+    icon: "info",
+    confirmButtonText: "OK"
+});
+})
+
+
+let appliedjobsBtn =document.getElementById("appliedjobsBtn");
+
+appliedjobsBtn.addEventListener("click",()=>{
+  location.href="../appliedjobs/appliedjobs.html"
+})
+
+
 document.getElementById("search-form").addEventListener("submit", function (event) {
   event.preventDefault(); // Prevent form submission
   fetchJobListings(); // Call fetch function with filtering

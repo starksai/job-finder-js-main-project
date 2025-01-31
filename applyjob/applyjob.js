@@ -104,24 +104,44 @@ applicationForm.addEventListener("submit", async (event) => {
         if (user) {
             const userId = user.uid;
 
-            // Generate unique application ID
-            const newAppRef = push(ref(db, `applications/${jobId}`));
-            const applicationId = newAppRef.key; 
-
-            // Prepare application data
-            const applicationData = {
-                applicationId,
-                candidateId: userId,
-                candidateName: fullName,
-                email,
-                resumeLink,
-                status: "Pending",
-                appliedDate: new Date().toISOString()
-            };
-
-            // Store application in Firebase under the job's node
             try {
+                // Fetch Job Details from Firebase
+                const jobRef = ref(db, `jobs/${jobId}`);
+                const jobSnapshot = await get(jobRef);
+
+                if (!jobSnapshot.exists()) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Job Not Found",
+                        text: "This job no longer exists.",
+                    });
+                    return;
+                }
+
+                const job = jobSnapshot.val(); // Fetch job data
+                const companyName = job.companyName;
+                const jobTitle = job.title;
+
+                // Generate unique application ID
+                const newAppRef = push(ref(db, `applications/${jobId}`));
+                const applicationId = newAppRef.key; 
+
+                // Prepare application data
+                const applicationData = {
+                    applicationId,
+                    candidateId: userId,
+                    candidateName: fullName,
+                    email,
+                    resumeLink,
+                    status: "Pending",
+                    appliedDate: new Date().toISOString(),
+                    companyName,  // ✅ Added company name
+                    jobTitle      // ✅ Added job title
+                };
+
+                // Store application in Firebase under the job's node
                 await push(ref(db, `applications/${jobId}`), applicationData);
+
                 Swal.fire({
                     title: "Application Submitted!",
                     text: "Your application has been successfully submitted.",
@@ -130,6 +150,7 @@ applicationForm.addEventListener("submit", async (event) => {
                 }).then(() => {
                     window.location.href = "../dashboards/jobseeker.html"; // Redirect to dashboard
                 });
+
             } catch (error) {
                 console.error("Error submitting application:", error);
                 Swal.fire({
@@ -147,6 +168,7 @@ applicationForm.addEventListener("submit", async (event) => {
         }
     });
 });
+
 
 // Function to validate email format
 function validateEmail(email) {
