@@ -153,9 +153,9 @@ function getStatusClass(status) {
 
 
 window.updateApplicationStatus = (jobId, applicationId, newStatus)=>{
-    console.log("Updating:", jobId, applicationId, newStatus); // Debugging
+    // console.log("Updating:", jobId, applicationId, newStatus); // Debugging
     const applicationRef = ref(db, 'applications/' + jobId + '/' + applicationId);
-    console.log("Database Path:", applicationRef.toString()); // Debugging
+    // console.log("Database Path:", applicationRef.toString()); // Debugging
   
     update(applicationRef, {
         status: newStatus
