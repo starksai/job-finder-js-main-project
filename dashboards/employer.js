@@ -43,7 +43,7 @@ employerLogoutBtn.addEventListener("click",()=>{
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!"
+        confirmButtonText: "Yes!"
       }).then((result) => {
         if (result.isConfirmed) {
           signOut(auth)
@@ -135,7 +135,7 @@ function fetchApplicationsForJob(jobId) {
 }
 
 
-// Helper function to get the class for the application status
+// Helper function to get the class for the application status 
 function getStatusClass(status) {
   switch (status) {
       case 'New':
@@ -151,24 +151,55 @@ function getStatusClass(status) {
   }
 }
 
-// Update application status in Firebase
-function updateApplicationStatus(jobId, applicationId, newStatus) {
-  const applicationRef = ref(database, 'applications/' + jobId + '/' + applicationId);
-  update(applicationRef, {
-      status: newStatus
-  }).then(() => {
-      Swal.fire({
-          title: "Success!",
-          text: "Application status updated.",
-          icon: "success"
-      }).then(() => {
-          location.reload();
-      });
-  }).catch((error) => {
-      Swal.fire({
-          title: "Error!",
-          text: error.message,
-          icon: "error"
-      });
-  });
+
+window.updateApplicationStatus = (jobId, applicationId, newStatus)=>{
+    console.log("Updating:", jobId, applicationId, newStatus); // Debugging
+    const applicationRef = ref(db, 'applications/' + jobId + '/' + applicationId);
+    console.log("Database Path:", applicationRef.toString()); // Debugging
+  
+    update(applicationRef, {
+        status: newStatus
+    }).then(() => {
+        Swal.fire({
+            title: "Success!",
+            text: "Application status updated.",
+            icon: "success"
+        }).then(() => {
+            location.reload();
+        });
+    }).catch((error) => {
+        console.error("Error updating application status:", error); // Debugging
+        Swal.fire({
+            title: "Error!",
+            text: error.message,
+            icon: "error"
+        });
+    });
+
 }
+
+
+// function updateApplicationStatus(jobId, applicationId, newStatus) {
+//     console.log("Updating:", jobId, applicationId, newStatus); // Debugging
+//     const applicationRef = ref(db, 'applications/' + jobId + '/' + applicationId);
+//     console.log("Database Path:", applicationRef.toString()); // Debugging
+  
+//     update(applicationRef, {
+//         status: newStatus
+//     }).then(() => {
+//         Swal.fire({
+//             title: "Success!",
+//             text: "Application status updated.",
+//             icon: "success"
+//         }).then(() => {
+//             location.reload();
+//         });
+//     }).catch((error) => {
+//         console.error("Error updating application status:", error); // Debugging
+//         Swal.fire({
+//             title: "Error!",
+//             text: error.message,
+//             icon: "error"
+//         });
+//     });
+//   }
